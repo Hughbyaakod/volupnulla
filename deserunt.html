@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>After Propagation Example</title>
+</head>
+<body>
+    <button id="myButton">Click Me</button>
+    <script>
+        const button = document.getElementById('myButton');
+
+        button.addEventListener('click', () => {
+            console.log('Button clicked.');
+
+            // Schedule a callback to run after the next propagation
+            afterNextPropagation(() => {
+                console.log('Callback executed after the click event propagation.');
+                // Perform some DOM operations
+                button.textContent = 'Clicked!';
+            });
+        });
+
+        function afterNextPropagation(callback) {
+            // You can choose any of the methods below:
+            
+            // Method 1: Using setTimeout
+            setTimeout(callback, 0);
+
+            // Method 2: Using Promise
+            // Promise.resolve().then(callback);
+
+            // Method 3: Using requestAnimationFrame
+            // requestAnimationFrame(callback);
+        }
+    </script>
+</body>
+</html>
